@@ -8,7 +8,7 @@ import mysql.connector as mc
 import os
 import ctypes
 from ctypes import wintypes, windll
-
+# Getting path to desktop
 CSIDL_DESKTOP= 0
 
 _SHGetFolderPath = windll.shell32.SHGetFolderPathW
@@ -22,7 +22,7 @@ result = _SHGetFolderPath(0, CSIDL_DESKTOP, 0, 0, path_buf)
 
 desktop = path_buf.value 
 a =""
-
+#Initial page to gather info on database
 def init(page:ft.Page):
     def button_clicked(e):
         global dbvalue
@@ -45,7 +45,7 @@ def init(page:ft.Page):
     page.update()
         
 ft.app(init)
-
+#MAIN page
 def main(page:ft.Page):
     def Reconvert(a,x):
         con=mc.connect(host="localhost",user="root",password=dbpass,database = dbvalue)
